@@ -28,11 +28,11 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 
-Route::middleware('auth:api')->group(function () {
-    Route::get('/users', [UserController::class, 'index']);
-    Route::post('/send-message', [UserController::class, 'sendMessage']);
-    Route::post('/favorite-block', [UserController::class, 'favorite']);
-    Route::post('/favorite-block', [UserController::class, 'Block']);
-});
+Route::controller(UserController::class)->group(function () {
+    Route::get('users', 'index');
+    Route::post('send-message', 'sendMessage');
+    Route::post('favorite-block', 'favorite');
+    Route::post('favorite-block', 'block');
+})->middleware('auth:api');
 
 
