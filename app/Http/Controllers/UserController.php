@@ -117,40 +117,6 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Message sent successfully']);
     }
-    public function update(Request $request)
-    {
-        $user = Auth::user();
-        $validatedData = $request->validate([
-            'username' => 'required|unique:users,username,'.$user->id,
-            'email' => 'required|email|unique:users,email,'.$user->id,
-            'password' => 'nullable|min:8',
-            'gender' => 'required',
-            'age' => 'required|integer',
-            'bio' => 'required',
-            'picture' => 'required',
-            'location_id' => 'required|integer',
-        ]);
-    
-        $user->update([
-            'username' => $validatedData['username'],
-            'email' => $validatedData['email'],
-            'gender' => $validatedData['gender'],
-            'age' => $validatedData['age'],
-            'bio' => $validatedData['bio'],
-            'picture' => $validatedData['picture'],
-            'location_id' => $validatedData['location_id'],
-        ]);
-    
-        if(isset($validatedData['password'])){
-            $user->update(['password' => Hash::make($validatedData['password'])]);
-        }
-    
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Profile updated successfully',
-            'user' => $user,
-        ]);
-    }
     
 }
            
