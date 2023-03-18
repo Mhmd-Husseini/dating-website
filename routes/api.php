@@ -29,5 +29,9 @@ Route::controller(AuthController::class)->group(function () {
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/users', [UserController::class, 'index']);
+    Route::post('/send-message', [UserController::class, 'sendMessage']);
+    Route::post('/favorite-block', [UserController::class, 'favorite']);
+    Route::post('/favorite-block', [UserController::class, 'Block']);
 });
+
 
