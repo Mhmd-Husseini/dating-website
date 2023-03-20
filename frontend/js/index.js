@@ -33,3 +33,14 @@ searchButton.addEventListener('click', () => {
   });
 });
 
+document.getElementById('logout-link').addEventListener('click', function(event) {
+  event.preventDefault();
+  axios.post('http://127.0.0.1:8000/api/logout')
+    .then(function(response) {
+      window.location.href = 'login.html';
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+
