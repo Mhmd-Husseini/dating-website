@@ -6,7 +6,7 @@ form.addEventListener('submit', function(event) {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   
-  axios.post('http://127.0.0.1:8000/api/register', {
+  axios.post('http://127.0.0.1:8000/api/login', {
     email: email,
     password: password
   })
